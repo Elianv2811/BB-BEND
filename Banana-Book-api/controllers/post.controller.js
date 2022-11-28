@@ -6,9 +6,7 @@ const controller = {};
 controller.create = async (req, res) => {
     try {
         const { title, price, description, category, condition, image } = req.body;
-        const { name, lastName } = req.user;
-
-        debug(`Post creado por: ${name} ${lastName}`);
+        const { _id: userID } = req.user;
 
         //Validación de los campos
         const post = new Post({
@@ -17,7 +15,8 @@ controller.create = async (req, res) => {
             description: description,
             category: category,
             condition: condition,
-            image: image
+            image: image,
+            user: userID
         });
 
         const newPost = await post.save();
@@ -35,7 +34,10 @@ controller.create = async (req, res) => {
 
 controller.findAll = async ( req, res ) => {
     try {
-        const posts = await Post.find({ hidden: false });
+        const posts = 
+        await Post
+            .find({ hidden: false })
+            .populate('user', 'name lastName');
         return res.status(200).json({ posts });
     } catch (error) {
         debug({error});
