@@ -14,6 +14,4 @@ router.post(
 
 router.post("/signin", authController.login);
 
-router.get("/profile");
-
 module.exports = router;

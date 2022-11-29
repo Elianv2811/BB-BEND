@@ -6,8 +6,10 @@ const runValidation = require("../../validators/index.middleware");
 const { userValidator } = require("../../validators/user.validators");
 
 router.get(
-  "/:identifier",
-  userValidators.findUserByIdValidator,
-  runValidations,
-  UserController.findOneByID
+  "/profile",
+  userValidator.findUserByIdValidator,
+  runValidation,
+  userController.findOneByID
 );
+
+module.exports = router;

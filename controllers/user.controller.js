@@ -1,10 +1,17 @@
 const User = require("../models/user.model");
+const { verifyToken } = require("../utils/jwt.tools");
 
 controller.findOneByID = async (req, res) => {
   try {
-    const { identifier } = req.params;
+    const { authorization } = req.headers;
 
-    const user = await User.findById(identifier);
+    const [, token] = authorization.split(" ");
+
+    const tokenObject = verifyToken(token);
+
+    const { userID } = tokenObject;
+
+    const user = await User.findById(userID);
 
     if (!user) {
       return res.status(404).json({ error: "User no encontrado" });

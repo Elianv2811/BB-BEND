@@ -8,3 +8,5 @@ validators.findUserByIdValidator = [
     .isMongoId()
     .withMessage("El id debe de ser un id de Mongo válido"),
 ];
+
+module.exports = validators;
