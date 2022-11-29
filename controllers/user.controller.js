@@ -14,7 +14,7 @@ controller.findOneByID = async (req, res) => {
 
     const { userID } = tokenObject;
 
-    const user = await User.findById(tokenObject.userID);
+    const user = await User.findById(userID);
 
     if (!user) {
       return res.status(404).json({ error: "User no encontrado" });
