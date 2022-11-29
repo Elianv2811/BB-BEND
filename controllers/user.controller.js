@@ -1,4 +1,4 @@
-const User = require("../models/user.model");
+const User = require("../models/User.model");
 const { verifyToken } = require("../utils/jwt.tools");
 
 controller.findOneByID = async (req, res) => {
