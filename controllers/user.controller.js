@@ -1,5 +1,6 @@
 const User = require("../models/User.model");
 const { verifyToken } = require("../utils/jwt.tools");
+const debug = require("debug")("app:user:controller");
 
 const controller = {};
 
