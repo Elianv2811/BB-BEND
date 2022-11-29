@@ -2,7 +2,7 @@ const { body, param } = require("express-validator");
 const validators = {};
 
 validators.findUserByIdValidator = [
-  param("identifier")
+  param("token")
     .notEmpty()
     .withMessage("El id no debe de ir vacío")
     .isMongoId()
