@@ -20,7 +20,7 @@ controller.findOneByID = async (req, res) => {
       return res.status(404).json({ error: "User no encontrado" });
     }
 
-    res.status(200).json(post);
+    res.status(200).json(user);
   } catch (error) {
     debug({ error });
     res.status(500).json({ error: "Error interno de servidor" });
