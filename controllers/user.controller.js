@@ -1,6 +1,8 @@
 const User = require("../models/User.model");
 const { verifyToken } = require("../utils/jwt.tools");
 
+const controller = {};
+
 controller.findOneByID = async (req, res) => {
   try {
     const { authorization } = req.headers;
